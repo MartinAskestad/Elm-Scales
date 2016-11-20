@@ -10,7 +10,7 @@ import Json.Decode as Json
 -- Model
 type alias Model = { root:String, scale:String }
 model: Model
-model = Model "C" "Major"
+model = Model "C""Major"
 
 type Msg =
       ChangeRootNote String
@@ -61,5 +61,6 @@ view model =
         ]
     ]
 
+main: Program Never Model Msg
 main =
     beginnerProgram { model = model, update = update, view = view }
