@@ -1,0 +1,38 @@
+{
+  "name": "elm-scales",
+  "version": "1.0.0",
+  "description": "A small ELM application to show the notes of a musical scale for a given key.",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinAskestad/Elm-Scales.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartinAskestad/Elm-Scales/issues"
+  },
+  "homepage": "https://github.com/MartinAskestad/Elm-Scales#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.9",
+    "elm": "^0.18.0",
+    "elm-webpack-loader": "^4.4.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "purecss": "^1.0.0"
+  }
+}
