@@ -53,7 +53,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            title: 'Elm-Scales'
+            template: resolve('src/index.html')
         })
     ].concat(
         isProd ? [
