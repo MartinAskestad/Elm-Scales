@@ -6,7 +6,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "gulp",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "deploy": "gulp gh-pages"
   },
   "repository": {
     "type": "git",

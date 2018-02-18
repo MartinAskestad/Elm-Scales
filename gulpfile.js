@@ -16,4 +16,4 @@ gulp.task('gh-pages', () => {
         .pipe(ghPages());    
 });
 
-gulp.task('default', ['webpack', 'gh-pages']);
+gulp.task('default', ['webpack']);
