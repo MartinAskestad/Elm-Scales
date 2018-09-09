@@ -1,11 +1,23 @@
 module Scales exposing (chromatic, getScaleNotes, noteToString, scales)
 
 import Dict exposing (Dict, fromList, keys)
-import List exposing (drop, head, length, scanl)
-import String exposing (uncons)
-import Regex exposing(HowMany(..), regex, replace)
+import List exposing (drop, foldl, head, length, reverse)
+import Maybe exposing (withDefault)
+import String exposing (replace, uncons)
 
 type Note = A | A_ | B | C | C_ | D | D_ | E | F | F_ | G | G_
+
+scanl f b xs =
+  let
+    scan1 x accAcc =
+      case accAcc of
+        acc :: _ ->
+          f x acc :: accAcc
+        [] ->
+          [] -- impossible
+  in
+    reverse (foldl scan1 [b] xs)
+    
 
 fromString s =
     case uncons s of
@@ -24,8 +36,19 @@ fromString s =
     _ -> Nothing
 
 noteToString n =
-    toString n
-    |> replace All (regex "_") (\_ -> "#")
+    case n of
+        A  -> "A"
+        A_ -> "A#"
+        B  -> "B"
+        C  -> "C"
+        C_ -> "C#"
+        D  -> "D"
+        D_ -> "D#"
+        E  -> "E"
+        F  -> "F"
+        F_ -> "F#"
+        G  -> "G"
+        G_ -> "G#"
 
 chromatic = [A, A_, B, C, C_, D, D_, E, F, F_, G , G_]
 
@@ -45,7 +68,7 @@ up halfSteps n =
     let
         idx = chromatic |> findIndex (\n_ -> n_ == n)
     in
-        get chromatic ((idx + halfSteps) % length chromatic)
+        get chromatic (modBy (length chromatic) (idx + halfSteps))
 
 half = up 1
 
@@ -62,7 +85,6 @@ getScale root =
         scanl scanner root
 
 -- Scale Formulas
-major = [whole, whole, half, whole, whole, whole, half]
 scaleFormulas = fromList [("Major", [whole, whole, half, whole, whole, whole, half]),
                           ("Natural minor", [whole, half, whole, whole, half, whole, whole]),
                           ("Major pentatonic", [whole, whole, wholeHalf, whole, wholeHalf]),

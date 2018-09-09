@@ -19,7 +19,7 @@ view model =
         scaleOption name = option [(if model.scale == name then selected True else selected False)] [ text name]
         onChange tagger = on "change" (Json.map tagger targetValue)
         prettyPrintNotes scale = map (\n -> case n of
-                                            Just n -> li [] [ text (noteToString n)]
+                                            Just n_ -> li [] [ text (noteToString n_)]
                                             Nothing -> li [] []) scale
     in
     div [class "container"] [
