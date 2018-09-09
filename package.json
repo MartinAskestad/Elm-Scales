@@ -22,7 +22,6 @@
   "homepage": "https://github.com/MartinAskestad/Elm-Scales#readme",
   "devDependencies": {
     "css-loader": "^0.28.9",
-    "elm": "^0.18.0",
     "elm-webpack-loader": "^4.5.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
