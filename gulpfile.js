@@ -21,14 +21,14 @@ gulp.task('css', () => {
         .pipe(gulp.dest('dist/'));
 })
 
-gulp.task('html',['elm', 'css'], () => {
+gulp.task('html', gulp.series('css', 'elm', () => {
     const target = gulp.src('src/index.html');
     const sources = gulp.src(['./dist/*.js', './dist/*.css'], { read: false });
     return target
         .pipe(inject(sources, { ignorePath: '/dist' }))
         .pipe(minifyHtml({collapseWhitespace: true, removeComments: true }))
         .pipe(gulp.dest('./dist'));
-});
+}));
 
 
 
@@ -37,4 +37,4 @@ gulp.task('gh-pages', () => {
         .pipe(ghPages());    
 });
 
-gulp.task('default', ['html']);
+gulp.task('default', gulp.series('html', (done) => { done(); }));
